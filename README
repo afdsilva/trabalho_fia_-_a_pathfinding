@@ -1,0 +1,53 @@
+Trabalho FIA - A* + Conecta 4
+
+Nome: Andre Felipe da Silva
+Matricula: 11107587
+Data Ultimo Update: 30.08.2013
+Revisão: 1.21
+
+Instruções: 
+
+	NOTA: o trabalho utiliza a biblioteca SFML ( http://sfml-dev.org ) para recursos graficos e multimedia
+	referencias para instalação retiradas do forum http://en.sfml-dev.org/forums/index.php?topic=11338.0
+	Comandos:
+		make runtime - Irá instalar os pacotes de execução do SFML
+		make dev	 - Irá instalar os pacotes de desenvolvimento do SFML (NOTA: instala também os pacotes runtime)
+		make all	 - Constroi arquivos objetos e liga o arquivo executável
+		make clean	 - Apaga a compilação e os arquivos objetos do trabalho
+		make package - Compacta o trabalho em zip
+
+		./mAle_ai_games - após o comando "make all", esse será o executável (não necessita de parametros)
+
+A*:
+Usabilidade:
+	O trabalho utiliza uma interface grafica intuitiva, um mapa 36x20 (nenhum motivo especial para esse tamanho, entretanto)
+	inicialmente vazio é criado, com um personagem (ninja) na posicao inicial (1,2) (posicao mais superior esquerda)
+	é possivel se movimentar com o botão esquerdo do mouse clicando em qualquer quadrado, exceto se ele for uma parede.
+	O quadradado ficará esverdeado se a posição for válida, e vermelho caso seja um obstáculo. Uma linha branca irá 
+	demarcar o caminho que será seguido pelo personagem.
+	O botão direito do mouse cria "Paredes" no mapa, é possível clicar e arrastar para criar formas mais rapidamente,
+	clicar em uma parede (ainda com com o botao direito), irá remover a parede retornando o "chao" ao quadrado desejado;
+
+	
+	
+Problemas conhecidos:
+	Algumas vezes, em especial quando não se espera o caminho finalizar, o movimento inicial é errático, o personagem
+	"caminha" o primeiro quadrado para um lado aleatório, acredito que o motivo seja pela forma que é feito o movimento
+	do personagem na Engine;
+	Como é possivel alterar o mapa enquanto o personagem anda, é possivel colocar paredes na posicao final e o personagem
+	ainda irá em direção a ela, de novo, isto tem relação com a forma que a engine foi desenvolvida, por que preferi usar 
+	um sistema de colisão no metodo de calculo A* do que diretamente no método de movimento; 
+	
+Conecta 4:
+Usabilidade:
+	Ao entrar na tela do jogo, existem 5 botoes disponiveis: P1 e IA1, mudam quem será o jogador 1 (Vermelho), enquanto
+	P2 e IA2 mudam o jogador 2, Novo Jogo, reseta o tabuleiro sem a necessidade de sair do jogo.
+
+Problemas conhecidos:
+	Tive muitos problemas pra implementar o Minimax corretamente, de fato, acredito que ainda não esteja 100%, o algoritmo
+	funciona, teoricamente, mas em certas ocasiões, a IA não sabe que movimento fazer (por falta de tempo, não consegui
+	descobrir o motivo). Outra questão é a heuristica, tentei dois tipos de heuristica, refazendo duas vezes a pode alpha
+	beta, porém não foi possível definir se a heuristica de fato seria uma heuristica aplicavel ao problema, inclui um
+	fator de aleatoriedade no algoritmo, para pesquisar os ramos, ao inves de pesquisar linearmente as colunas, ele pesquisa
+	de forma aleatoria para cada poda.
+	
